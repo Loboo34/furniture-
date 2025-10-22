@@ -147,7 +147,7 @@ export const schemas = {
 			.default("Pending"),
 	}),
 	addToCart: Joi.object({
-		user: Joi.string().required(),
+		//user: Joi.string().required(),
 		productId: Joi.string().required(),
 		quantity: Joi.number(),
 		price: Joi.number(),

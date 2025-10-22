@@ -87,6 +87,8 @@ export const addProduct = async (req: Request, res: Response) => {
 				product: newProduct._id,
 				isActive: true,
 			});
+
+			await listing.save()
 		} catch (err) {
 			logger.info("Failed to add listing");
 			return res

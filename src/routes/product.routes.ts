@@ -15,9 +15,10 @@ import { authenticate } from "../middleware/auth";
 
 const router = Router();
 
+router.get("/listing/:sellerId", getListingsBySeller)
+
 router.get("/",  getProducts);
 router.get("/:id", getProduct);
-router.get("/listing/:id", getListingsBySeller)
 
 
 router.post(

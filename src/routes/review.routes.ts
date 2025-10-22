@@ -1,12 +1,19 @@
 import { Router } from "express";
-
-import { leaveReview,  getReviewsByProduct } from "../controllers/review.controller";
+import {
+	leaveReview,
+	getReviews,
+	getReviewsByProduct,
+	getReviewsBySeller,
+} from "../controllers/review.controller";
+import { authenticate } from "../middleware/auth";
 import { validate, schemas } from "../middleware/validator";
 
+const router = Router();
 
-const router = Router()
 
-router.post("/", validate(schemas.leaveReview), leaveReview)
-router.get("/:id", getReviewsByProduct)
+router.get("/seller/:sellerId", getReviewsBySeller);
 
-export default router
+router.post("/", authenticate, validate(schemas.leaveReview), leaveReview);
+router.get("/:id", getReviewsByProduct);
+
+export default router;
